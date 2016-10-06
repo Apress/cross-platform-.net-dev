@@ -1,0 +1,20 @@
+H1{
+	font-size: large;
+	font-weight: bold;
+}
+BODY
+{
+    color: #000000;
+    font-size: small;
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+}
+TABLE{
+	border-width: 0px;
+}
+TR{
+	valign:	top;
+}
+TH{
+	font-weight: bold;
+}

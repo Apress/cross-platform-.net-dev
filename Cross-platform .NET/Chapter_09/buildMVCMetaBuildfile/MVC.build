@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<!-- MVC.build-->
+<!-- must implement iMVC.meta.build: -->
+<!-- contract / interface targets: BuildAndTest, Clean -->
+<!-- contract / interface properties: BuildFolder DO NOT DEFINE HERE-->
+
+<project name="MVC Build and test" default="BuildAndTest">
+ 
+    <target name="BuildAndTest" 
+           description="cleans, builds source and tests, then runs tests">
+
+        <echo message="Passed in BuildFolder=${BuildFolder}"/>
+        <call target="Clean"/>
+        <call target="Compile.Application"/>
+        <call target="Compile.Test"/>
+        <call target="tests"/>
+    </target>
+
+    <target name="Clean" 
+            description="Deletes files created by this module">
+
+        <delete file="${BuildFolder}/SimpleMVC.exe" failonerror="false"/>
+        <delete file="${BuildFolder}/MVCTest.dll" failonerror="false"/>
+    </target>
+
+    <target name="Compile.Application"
+            description="Builds the application source code">
+
+        <csc target="exe" output="${BuildFolder}/SimpleMVC.exe">
+            <sources>
+                <includes name="SimpleMVC.cs"/>
+                <includes name="Person.cs"/>
+                <includes name="View.cs"/>
+                <includes name="Controller.cs"/>
+                <includes name="ConsoleView.cs"/>
+
+            </sources>
+        </csc>
+    </target>
+
+    <target name="Compile.Test"
+            description="Builds the test source code">
+
+        <csc target="library" output="${BuildFolder}/MVCTest.dll">
+            <sources>
+                <includes name="MVC.Test.cs"/>
+            </sources>
+            <references>
+                <includes name="${BuildFolder}/SimpleMVC.exe"/>
+                <includes name="NUnit.Framework.dll"/>
+            </references>
+        </csc>
+     </target>
+
+    <target name="tests"
+            description="runs the tests">
+
+        <nunit2>
+            <test assemblyname="${BuildFolder}/MVCTest.dll" failonerror="true"/>
+        </nunit2>
+     </target>
+</project>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- PersonTest.build-->
+
+<project name="Person - build test" default="build">
+    
+    <echo message="This project builds the Person.Test.cs into a DLL"/>
+    <echo message="Target platform is ${nant.settings.currentframework}"/>
+
+    <target name="build" description="Produces PersonTest.dll for NUnit consumption">
+        <csc target="library" output="PersonTest.dll">
+            <sources>
+                <includes name = "PersonTest.cs"/>
+            </sources>
+            <references>
+                <includes name = "Person.dll"/>
+                <includes name = "nunit.framework.dll"/>
+            </references>
+        </csc>
+    </target>
+</project>

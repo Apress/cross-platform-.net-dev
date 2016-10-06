@@ -1,0 +1,10 @@
+<?xml version = "1.0"?>
+<project name = "GetInfoBuild" default = "Build">
+    <target name = "Build" description = "Builds the GetInfo.exe executable">
+        <csc target = "exe" output = "GetInfo.exe">
+            <sources>
+                <includes name = "GetInfo.cs"/>
+            </sources>
+        </csc>
+    </target>
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!-- dummy1.build-->
+<!-- must implement iMVC.meta.build: -->
+<!-- contract / interface targets: BuildAndTest, Clean -->
+<!-- contract / interface properties: BuildFolder DO NOT DEFINE HERE -->
+
+<project name="dummy1" default="BuildAndTest">
+ 
+    
+   <target name="BuildAndTest" 
+           description="cleans, builds source and tests, then runs tests">
+    </target>
+
+    <target name="Clean" 
+            description="Deletes files created by this module">
+    </target>
+</project>

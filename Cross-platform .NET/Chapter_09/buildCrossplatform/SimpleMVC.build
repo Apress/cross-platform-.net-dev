@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!-- SimpleMVC.build-->
+
+<project name="MVC Build" default="Build">
+ 
+    <target name="Build">
+        <echo message="Passed in BuildFolder=${BuildFolder}"/>
+        <call target="Clean"/>
+        <call target="Build.Application"/>
+    </target>
+
+    <target name="Clean" description="Deletes files created by this module">
+        <delete file="${BuildFolder}/SimpleMVC.exe" failonerror="false"/>
+    </target>
+
+    <target name="Build.Application" description="Builds the application assembly">
+        <csc target="exe" output="${BuildFolder}/SimpleMVC.exe">
+            <sources>
+                <includes name="src/SimpleMVC.cs"/>
+            </sources>
+            <references>
+                <includes name="${BuildFolder}/MVC.dll"/>
+                <includes name="${BuildFolder}/MVC.${Deploy}.dll"/>
+            </references>
+        </csc>
+    </target>
+</project>

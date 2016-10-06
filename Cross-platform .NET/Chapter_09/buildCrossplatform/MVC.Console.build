@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- MVC.Console.build-->
+
+<project name="MVC Console build" default="Build">
+
+   <target name="Build">
+        <echo message="Passed in BuildFolder=${BuildFolder}"/>
+        <call target="Clean"/>
+        <call target="Compile.Library"/>
+    </target>
+
+    <target name="Clean">
+        <delete file="${BuildFolder}/MVC.Console.dll" failonerror="false"/>
+    </target>
+
+    <target name="Compile.Library">
+        <csc target="library" output="${BuildFolder}/MVC.Console.dll">
+            <sources>
+                <includes name="src/ViewFactory.cs"/>
+		<includes name="src/ConsoleView.cs"/>
+            </sources>
+            <references>
+                <includes name="${BuildFolder}/MVC.dll"/>
+            </references>
+        </csc>
+    </target>
+
+</project>

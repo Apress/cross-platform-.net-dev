@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- Person.Subscript.Wrapper.build-->
+
+<project name="Person Subscript Wrapper" default="build">
+       
+    <echo message="This project calls Person.build and PersonTest.build and runs the tests."/>
+
+    <target name="build" description="Builds Person.dll and PersonTest.dll assemblies from sub-scripts">
+
+        <nant buildfile="Person.build"/>
+        <nant buildfile="PersonTest.build"/>
+
+        <nunit2>
+            <test assemblyname="PersonTest.dll"/>
+        </nunit2>
+
+    </target>
+</project>
+

@@ -1,0 +1,29 @@
+namespace CrossPlatform.Net.Chapter1{
+    public class CompileMe{
+
+        public static void  Main(){
+            System.Console.WriteLine("Compile Me!");
+        }
+    }
+}
+
+
+.method public static void  Main() cil managed
+{
+  .entrypoint
+  // Code size       11 (0xb)
+  .maxstack  1
+  IL_0000:  ldstr      "Compile Me!"
+  IL_0005:  call       void [mscorlib]System.Console::WriteLine(string)
+  IL_000a:  ret
+} // end of method CompileMe::Main
+
+
+...
+0040200C 0200	add al, byte ptr [eax]
+0040200E 0000	add byte ptr [eax], al
+00402010 7C20	jl 00402032
+00402012 0000	add byte ptr [eax], al
+00402014 2402	and al, 02
+00402016 0200	add byte ptr [eax]. al
+...

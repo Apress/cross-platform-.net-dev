@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Rex Jaeschke (private) -->
+<!ELEMENT AssemblyCulture (#PCDATA)>
+<!ELEMENT AssemblyInfo (AssemblyName, AssemblyPublicKey, AssemblyVersion, AssemblyCulture, Attributes)>
+<!ELEMENT AssemblyName (#PCDATA)>
+<!ELEMENT AssemblyPublicKey (#PCDATA)>
+<!ELEMENT AssemblyVersion (#PCDATA)>
+<!ELEMENT Attribute (AttributeName, Excluded, ExcludedTypeName?, ExcludedLibraryName?)>
+<!ELEMENT AttributeName (#PCDATA)>
+<!ELEMENT Attributes (Attribute*)>
+<!ELEMENT Base (BaseTypeName?, ExcludedBaseTypeName?, ExcludedLibraryName?)>
+<!ELEMENT BaseTypeName (#PCDATA)>
+<!ELEMENT Docs (summary?, altmember?, altcompliant?, param*, returns?, value?, exception*, threadsafe?, remarks?, example?, permission?, example?)>
+<!ELEMENT Excluded (#PCDATA)>
+<!ELEMENT ExcludedBaseTypeName (#PCDATA)>
+<!ELEMENT ExcludedLibrary (#PCDATA)>
+<!ELEMENT ExcludedLibraryName (#PCDATA)>
+<!ELEMENT ExcludedTypeName (#PCDATA)>
+<!ELEMENT Interface (InterfaceName, Excluded)>
+<!ELEMENT InterfaceName (#PCDATA)>
+<!ELEMENT Interfaces (Interface*)>
+<!ELEMENT Libraries (Types+)>
+<!ELEMENT Member (MemberSignature+, MemberType, Attributes?, ReturnValue, Parameters, MemberValue?, Docs, Excluded, ExcludedLibrary*)>
+<!ATTLIST Member
+	MemberName NMTOKEN #REQUIRED
+>
+<!ELEMENT MemberOfLibrary (#PCDATA)>
+<!ELEMENT MemberSignature EMPTY>
+<!ATTLIST MemberSignature
+	Language CDATA #REQUIRED
+	Value CDATA #REQUIRED
+>
+<!ELEMENT MemberType (#PCDATA)>
+<!ELEMENT MemberValue (#PCDATA)>
+<!ELEMENT Members (Member*)>
+<!ELEMENT PRE EMPTY>
+<!ELEMENT Parameter (Attributes?)>
+<!ATTLIST Parameter
+	Name NMTOKEN #REQUIRED
+	Type CDATA #REQUIRED
+>
+<!ELEMENT Parameters (Parameter*)>
+<!ELEMENT ReturnType (#PCDATA)>
+<!ELEMENT ReturnValue (ReturnType?)>
+<!ELEMENT SPAN (#PCDATA | para | paramref | SPAN | see | block)*>
+<!ELEMENT ThreadingSafetyStatement (#PCDATA)>
+<!ELEMENT Type (TypeSignature+, MemberOfLibrary, AssemblyInfo, ThreadingSafetyStatement?, Docs, Base, Interfaces, Attributes?, Members, TypeExcluded)>
+<!ATTLIST Type
+	Name NMTOKEN #REQUIRED
+	FullName NMTOKEN #REQUIRED
+	FullNameSP NMTOKEN #REQUIRED
+>
+<!ELEMENT TypeExcluded (#PCDATA)>
+<!ELEMENT TypeSignature EMPTY>
+<!ATTLIST TypeSignature
+	Language CDATA #REQUIRED
+	Value CDATA #REQUIRED
+>
+<!ELEMENT Types (Type+)>
+<!ATTLIST Types
+	Library NMTOKEN #REQUIRED
+>
+<!ELEMENT altcompliant EMPTY>
+<!ATTLIST altcompliant
+	cref CDATA #REQUIRED
+>
+<!ELEMENT altmember EMPTY>
+<!ATTLIST altmember
+	cref CDATA #REQUIRED
+>
+<!ELEMENT block (#PCDATA | see | para | paramref | list | block | c | subscript | code | sup | pi)*>
+<!ATTLIST block
+	subset CDATA #REQUIRED
+	type NMTOKEN #REQUIRED
+>
+<!ELEMENT c (#PCDATA | para | paramref | code | see)*>
+<!ELEMENT code (#PCDATA)>
+<!ATTLIST code
+	lang CDATA #IMPLIED
+>
+<!ELEMENT codelink EMPTY>
+<!ATTLIST codelink
+	SampleID CDATA #REQUIRED
+	SnippetID CDATA #REQUIRED
+>
+<!ELEMENT description (#PCDATA | SPAN | paramref | para | see | c | permille | block | sub)*>
+<!ELEMENT example (#PCDATA | para | code | c | codelink | see)*>
+<!ELEMENT exception (#PCDATA | paramref | see | para | SPAN | block)*>
+<!ATTLIST exception
+	cref CDATA #REQUIRED
+>
+<!ELEMENT i (#PCDATA)>
+<!ELEMENT item (term, description*)>
+<!ELEMENT list (listheader?, item*)>
+<!ATTLIST list
+	type NMTOKEN #REQUIRED
+>
+<!ELEMENT listheader (term, description+)>
+<!ELEMENT onequarter EMPTY>
+<!ELEMENT para (#PCDATA | see | block | paramref | c | onequarter | superscript | sup | permille | SPAN | list | pi | theta | sub)*>
+<!ELEMENT param (#PCDATA | c | paramref | see | block | para | SPAN)*>
+<!ATTLIST param
+	name CDATA #REQUIRED
+>
+<!ELEMENT paramref EMPTY>
+<!ATTLIST paramref
+	name CDATA #REQUIRED
+>
+<!ELEMENT permille EMPTY>
+<!ELEMENT permission (#PCDATA | see | paramref | para | block)*>
+<!ATTLIST permission
+	cref CDATA #REQUIRED
+>
+<!ELEMENT pi EMPTY>
+<!ELEMENT pre EMPTY>
+<!ELEMENT remarks (#PCDATA | para | block | list | c | paramref | see | pre | SPAN | code | PRE)*>
+<!ELEMENT returns (#PCDATA | para | list | paramref | see)*>
+<!ELEMENT see EMPTY>
+<!ATTLIST see
+	cref CDATA #IMPLIED
+	langword CDATA #IMPLIED
+	qualify CDATA #IMPLIED
+>
+<!ELEMENT sub (#PCDATA | paramref)*>
+<!ELEMENT subscript EMPTY>
+<!ATTLIST subscript
+	term CDATA #REQUIRED
+>
+<!ELEMENT summary (#PCDATA | para | see | block | list)*>
+<!ELEMENT sup (#PCDATA | i | paramref)*>
+<!ELEMENT superscript EMPTY>
+<!ATTLIST superscript
+	term CDATA #REQUIRED
+>
+<!ELEMENT term (#PCDATA | block | see | paramref | para | c | sup | pi | theta)*>
+<!ELEMENT theta EMPTY>
+<!ELEMENT threadsafe (para+)>
+<!ELEMENT value (#PCDATA | para | list | see)*>

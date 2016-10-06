@@ -1,0 +1,5 @@
+//Uptime.idl
+interface Uptime
+{
+    long GetSeconds ();
+};

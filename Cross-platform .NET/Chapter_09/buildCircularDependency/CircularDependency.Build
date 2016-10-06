@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- CircularDependency.build-->
+
+<project name="Deadlock " default="alpha">
+    <description>Attempts to carry out an impossible build.</description>
+    
+    <target name="alpha" depends="omega">
+        <echo message = "The Alpha..." />
+    </target>
+
+    <target name="omega" depends="alpha">
+        <echo message = "...and the omega" />
+    </target>
+
+</project>
+

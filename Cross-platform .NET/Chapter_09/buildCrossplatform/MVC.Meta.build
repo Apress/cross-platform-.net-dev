@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<!-- MVC.Meta.build-->
+
+<project name="MVC Release" default="Release">
+ 
+    <property name="Deploy" value="Console"/>
+    <property name="fileList" value="MVC.build,MVC.${Deploy}.build,SimpleMVC.build"/> 
+    <property name="currentFile" value=""/>
+    <property name="BuildFolder" value="build"/>
+    
+    <mkdir dir="${BuildFolder}"/>
+
+    <target name="Release">
+
+        <call target="releaseClean"/>
+        <call target="componentBuilds"/>
+        <call target="copyToRelease"/>
+        <call target="Clean"/>
+    </target>
+
+    <target name="componentBuilds">
+        <echo message="Building components and testing..."/>
+        <foreach item="String" in="${fileList}" delim="," property="currentFile">
+            <nant buildfile="${currentFile}" target="Build" inheritall="true"/>
+        </foreach>
+    </target>
+ 
+
+    <target name="releaseClean">
+        <delete dir="release" failonerror="false"/>
+    </target>
+    
+    <target name="Clean">
+        <echo message="Cleaning components..."/>
+        <foreach item="String" in="${fileList}" delim="," property="currentFile">
+            <nant buildfile="${currentFile}" target="Clean" inheritall="true"/>
+        </foreach>
+        <delete dir="${BuildFolder}"/>
+    </target>
+
+    <target name="copyToRelease">
+
+        <mkdir dir="release"/>
+        <copy file="${BuildFolder}/MVC.dll" tofile="release/MVC.dll" overwrite="true"/>
+        <copy file="${BuildFolder}/MVC.${Deploy}.dll" tofile="release/MVC.${Deploy}.dll" overwrite="true"/>
+        <copy file="${BuildFolder}/SimpleMVC.exe" tofile="release/SimpleMVC.exe" overwrite="true"/>
+    </target>
+
+</project>

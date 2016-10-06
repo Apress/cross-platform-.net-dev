@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Person.build-->
+
+<project name="Person " default="build">
+
+    <description>Builds and cleansPerson assembly.</description>
+    
+    <target name="build" description="Build Person.cs into Person.dll">
+        <csc target="library" output="Person.dll">
+            <sources>
+                <includes name = "person.cs"/>
+            </sources>
+        </csc>
+    </target>
+
+    <target name="clean" description="Deletes any left over files in preparation for building">
+        <echo message="Cleaning files"/>
+        <delete file="Person.dll" failonerror="false"/>
+    </target>
+
+</project>
+

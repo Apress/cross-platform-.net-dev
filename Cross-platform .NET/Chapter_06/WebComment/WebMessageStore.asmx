@@ -1,0 +1,1 @@
+<%@ WebService Class="Crossplatform.NET.Chapter6.WebMessageStore" %>

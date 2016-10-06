@@ -1,0 +1,37 @@
+H1
+{
+    font-size: large;
+    font-weight: bold;
+}
+BODY
+{
+    color: #000000;
+    font-size: small;
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+}
+TABLE
+{
+    cellspacing:  0px;
+    cellpadding:  0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: Gray;
+}
+TR
+{
+    valign:    top;
+    border-style:none;
+}
+TH
+{
+    width: 50%;
+    background-color: #CCCCCC; 
+    text-align: left;
+    border-style:none;
+}
+TD
+{
+    border-style:none;
+    background-color: #66CCFF; 
+}

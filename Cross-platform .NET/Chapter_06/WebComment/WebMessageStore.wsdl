@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.cross-platform.net/GuestBook/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.cross-platform.net/GuestBook/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.cross-platform.net/GuestBook/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetMessages">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessagesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetMessagesSoapIn">
+    <part name="parameters" element="s0:GetMessages" />
+  </message>
+  <message name="GetMessagesSoapOut">
+    <part name="parameters" element="s0:GetMessagesResponse" />
+  </message>
+  <portType name="WebMessageStoreSoap">
+    <operation name="GetMessages">
+      <documentation>Retrieves all Guest Book entries</documentation>
+      <input message="s0:GetMessagesSoapIn" />
+      <output message="s0:GetMessagesSoapOut" />
+    </operation>
+  </portType>
+  <binding name="WebMessageStoreSoap" type="s0:WebMessageStoreSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetMessages">
+      <soap:operation soapAction="http://www.cross-platform.net/GuestBook/GetMessages" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WebMessageStore">
+    <documentation>Provides access to the Guest Book entries</documentation>
+    <port name="WebMessageStoreSoap" binding="s0:WebMessageStoreSoap">
+      <soap:address location="http://localhost/WebMessageStore.asmx" />
+    </port>
+  </service>
+</definitions>

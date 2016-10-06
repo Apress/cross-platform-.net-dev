@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- Person.build-->
+<!-- This is the format for an XML comment -->
+
+<project name="Person " default="build">
+    <description>Builds the Person assembly.</description>
+    
+    <echo message="This project builds the Person class into a .NET assembly"/>
+
+    <echo message = "Target framework is ${nant.settings.currentframework}" />
+
+    <target name="build" description="Build Person.cs into Person.dll">
+        <csc target="library" output="Person.dll">
+            <sources>
+                <includes name = "person.cs"/>
+            </sources>
+        </csc>
+    </target>
+
+</project>
+

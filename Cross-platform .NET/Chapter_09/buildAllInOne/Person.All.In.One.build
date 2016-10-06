@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- Person.All.In.One.build-->
+
+<project name="Person all in one" default="BuildAndTest">
+    
+    <echo message="Demonstrates dependency and the concept of a 'clean' target"/>
+    <echo message="Target platform is ${nant.settings.currentframework}"/>
+
+    <target name="BuildAndTest"
+            description="Works through resolution of dependency"
+            depends="test">
+    </target>
+
+    <target name="test"
+            description="Runs the person.test.dll through NUnit"
+            depends="PersonTest">
+
+            <echo message="Running Nunit"/>
+            <nunit2>
+                <test assemblyname="Person.Test.dll"/>
+            </nunit2>
+    </target>
+
+    <target name="personTest"
+            description="Produces Person.Test.dll for NUnit consumption"
+            depends="person">
+
+            <echo message="Building test dll"/>
+            <csc target="library" output="PersonTest.dll">
+                <sources>
+                    <includes name = "PersonTest.cs"/>
+                </sources>
+                <references>
+                   <includes name = "Person.dll"/>
+                   <includes name = "NUnit.Framework.dll"/>
+                </references>
+            </csc>
+    </target>
+
+    <target name="person"
+            description="Build Person.cs into Person.dll"> 
+
+            <echo message="Building Person.dll"/>
+            <csc target="library" output="Person.dll">
+                <sources>
+                    <includes name = "Person.cs"/>
+                </sources>
+            </csc>
+    </target>
+
+    <target name="clean"
+            description="Deletes any left over files in preparation for building">
+            <echo message="Cleaning files"/>
+            <delete file="Person.dll" failonerror="false"/>
+            <delete file="PersonTest.dll" failonerror="false"/>
+    </target>
+</project>

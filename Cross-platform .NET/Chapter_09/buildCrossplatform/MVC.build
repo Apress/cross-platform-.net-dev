@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!-- MVC.build-->
+
+<project name="MVC build" default="Build">
+
+   <target name="Build">
+        <echo message="Passed in BuildFolder=${BuildFolder}"/>
+        <call target="Clean"/>
+        <call target="Compile.Library"/>
+    </target>
+
+    <target name="Clean">
+        <delete file="${BuildFolder}/MVC.dll" failonerror="false"/>
+    </target>
+
+    <target name="Compile.Library">
+        <csc target="library" output="${BuildFolder}/MVC.dll">
+            <sources>
+                <includes name="src/Controller.cs"/>
+                <includes name="src/View.cs"/>
+                <includes name="src/Person.cs"/>
+            </sources>
+        </csc>
+    </target>
+
+</project>
